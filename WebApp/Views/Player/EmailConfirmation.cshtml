@@ -1,0 +1,20 @@
+﻿
+@model WebApp.Models.Player
+@{
+    ViewBag.Title = "EmailConfirmation";
+}
+<h4>VERIFIKACIJA ADRESE ELEKTRONIČKE POŠTE</h4>
+<p>
+    Thank you for registering. Please check your email for a confirmation
+    request with a link that will confirm your account. Once you click the
+    link, your registration will be complete.
+</p>
+<div>
+    <p>
+        Thank you for confirming your email. Please @Html.ActionLink("Click here to Log in", "Login", "Player", routeValues: null, htmlAttributes: new { id = "loginLink" })
+    </p>
+</div>
+<p>
+    Please confirm your account by clicking this @Html.ActionLink("Submit", "Login", "Player")
+</p>
+@TempData["info"]

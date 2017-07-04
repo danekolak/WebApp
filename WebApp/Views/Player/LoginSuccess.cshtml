@@ -1,0 +1,18 @@
+﻿@model WebApp.ViewModel.AccountViewModel
+
+@{
+    ViewBag.Title = "LoginSuccess";
+}
+
+@Html.AntiForgeryToken()
+@if (Session["korisnickoIme"] != null)
+{
+    @ViewBag.Success
+    <h4>Hello @Session["korisnickoIme"].ToString()</h4>
+    <div class="alert alert-success">@TempData["korisnickoime"]</div>
+    <br />
+    @Html.ActionLink("Logout", "Login", "Player")
+
+}
+<h2>Read</h2>
+Cookie Value = @ViewData["cookie"]

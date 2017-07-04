@@ -1,0 +1,60 @@
+﻿@model WebApp.Models.Player
+@{
+    ViewBag.Title = "Login";
+
+
+}
+@using (Html.BeginForm(FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <h4>@ViewBag.Error</h4>
+    <h4>@ViewBag.ErrorMessage</h4>
+        <h4>@ViewBag.LoginCounter</h4>
+        <h4>@ViewBag.ErrorMessageLogin</h4>
+        <h4>@ViewBag.Attempts</h4>
+
+        @TempData["korisnickoIme"]
+
+    //  <div class="alert alert-success"></div>
+
+
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.KorisnickoIme, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => Model.KorisnickoIme, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.KorisnickoIme, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Lozinka, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Lozinka, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Lozinka, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Login" class="btn btn-default" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <div class="checkbox">
+                    @Html.CheckBoxFor(model => model.RememberMe)
+                    @Html.LabelFor(model => model.RememberMe)
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<div>
+    @Html.ActionLink("Zaboravljeno korisničko ime", "ForgotUserName", new { @class = "btn btn-sm" })|
+    @Html.ActionLink("Zaboravljena lozinka", "ForgotPassword", new { @class = "btn btn-sm" })
+    @Html.ActionLink("Nova prijava", "Login", "Player", new { @class = "btn btn-sm" })
+    <br />
+    @Html.ActionLink("Natrag u listu", "GetPlayer", "Player", new { @class = "btn btn-sm" })
+</div>
